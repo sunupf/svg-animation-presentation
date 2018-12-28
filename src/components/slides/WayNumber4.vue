@@ -5,7 +5,7 @@ div
     leavePrev='slideOutRight' leaveNext='slideOutLeft'
     :steps='2')
     TwoSections(
-      content-title="Start with the Easiest"
+      content-title="Change the SVG a Bit"
       preview-title="Preview"
       :title-content-centered='false'
       :title-content-uppercase='false'
@@ -15,7 +15,7 @@ div
       div.slot-section(slot='content')
         ul
           li We have Star
-          li We want it to be Check
+          li We want it to be Moon
           li Vice Versa
           li Use CSS
         //- a.btn(@click="alert('ok')") Morph Shape
@@ -32,7 +32,7 @@ import { Slideshow } from 'eagle.js';
 import TwoSections from '../TwoSections.vue';
 
 export default {
-  name: 'WayNumber1',
+  name: 'WayNumber4',
   components: {
     TwoSections,
   },
@@ -65,6 +65,6 @@ path
 
 .morphed, svg:hover
   path
-    d path("M68.5 132L98.5 155.5L146 86.5L204.5 0L233 40.5L164.5 144.5L109.5 229L45 173L0 135L24 97L68.5 132Z")
+    d path("M219 116C219 169.572 175.124 213 121 213C66.8761 213 23 169.572 23 116C23 62.4284 66.8761 19 121 19C89.7651 98.8499 146.902 129.877 219 116Z")
 
 </style>

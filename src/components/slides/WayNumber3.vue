@@ -5,7 +5,7 @@ div
     leavePrev='slideOutRight' leaveNext='slideOutLeft'
     :steps='2')
     TwoSections(
-      content-title="Start with the Easiest"
+      content-title="Animation using JS"
       preview-title="Preview"
       :title-content-centered='false'
       :title-content-uppercase='false'
@@ -17,12 +17,12 @@ div
           li We have Star
           li We want it to be Check
           li Vice Versa
-          li Use CSS
+          li Use JS - Anime.js
         //- a.btn(@click="alert('ok')") Morph Shape
       div.slot-section(slot='preview')
         div.image-container
-          svg(:class="{morphed: step === 2}")(width="241" height="231" viewBox="0 0 241 231" fill="none" xmlns="http://www.w3.org/2000/svg")
-            path(d="M80 70.5L120.5 0L161 70.5L241 88.5L186.5 149.5L195 231L120.5 198L46 231L54.5 149.5L0 88.5L80 70.5Z" fill="#FFCC00")
+          svg(width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg")
+            path#star-shape(d="M139 134.5L179.5 64L220 134.5L300 152.5L245.5 213.5L254 295L179.5 262L105 295L113.5 213.5L59 152.5L139 134.5Z" fill="#FFCC00")
 
 
 </template>
@@ -30,9 +30,10 @@ div
 <script>
 import { Slideshow } from 'eagle.js';
 import TwoSections from '../TwoSections.vue';
+import anime from 'animejs'
 
 export default {
-  name: 'WayNumber1',
+  name: 'WayNumber3',
   components: {
     TwoSections,
   },
@@ -47,6 +48,22 @@ export default {
       this.isMorphed = !this.isMorphed;
     },
   },
+  watch: {
+  	'step': function(newVal, oldVal) {
+      if (newVal === 2) {
+        anime({
+          targets: '#star-shape',
+          d: 'M131.5 196L161.5 219.5L209 150.5L267.5 64L296 104.5L227.5 208.5L172.5 293L108 237L63 199L87 161L131.5 196Z',
+        });
+      }
+      if (newVal === 1) {
+        anime({
+          targets: '#star-shape',
+          d: 'M139 134.5L179.5 64L220 134.5L300 152.5L245.5 213.5L254 295L179.5 262L105 295L113.5 213.5L59 152.5L139 134.5Z',
+        });
+      }
+    }
+  },
 };
 </script>
 <style lang="stylus" scoped>
@@ -59,12 +76,4 @@ export default {
 .preview
   svg
     display block
-
-path
-  transition d 0.35s ease-out
-
-.morphed, svg:hover
-  path
-    d path("M68.5 132L98.5 155.5L146 86.5L204.5 0L233 40.5L164.5 144.5L109.5 229L45 173L0 135L24 97L68.5 132Z")
-
 </style>
